@@ -208,17 +208,6 @@ eliminarHardSkills(id: number) {
     colorInterno:hardSkills.colorInterno
   })
 }
-/****************animation on scroll************************* */
-/* const checkpoint:any = 300;
- 
-window.addEventListener("scroll", () => {
-  const currentScroll = window.pageYOffset;
-  if (currentScroll <= checkpoint) {
-    this.opacity = 1 - currentScroll / checkpoint;
-  } else {
-    this.opacity = 0;
-  }
-  document.querySelector<any>(".textoHardSkill").style.opacity = opacity;
-}); */
+
 
 }

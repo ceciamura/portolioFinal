@@ -246,13 +246,7 @@ this.formExperiencia= this.formBuilder.group({
     
   }
 
-  /**=====================LISTA TIPO TRABAJO // TIPO EDUCACION========================================= */
-  /* verTipoTrabajo(){
-    this.personaService.verTipo().subscribe(data=>{
-      //this.listaTrabajos=data;
-      console.log(data)
-    })
-  } */
+  
 
 
 
