@@ -1,0 +1,200 @@
+<section class="proyectos">
+  <h2 id="Proyectos"class="titulo-secciones">Proyectos</h2>
+  <button type="button" id="botonAgregar"    
+  color="accent"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal4" *ngIf="ulogged != ''" mat-raised-button >
+  Agregar Proyecto</button>
+  
+  <div class="container">
+    <div class="row">
+      <div *ngFor="let proyecto of misProyectos" class="col-12 col-lg-4 card">
+        <div *ngIf="ulogged != ''">
+          <button id="botonAgregar"
+            type="button"
+            class="botones-proyecto"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal4"
+          >
+            <i
+              (click)="editarProyecto(proyecto)"
+              class="fa-solid fa-pen-to-square text-info"
+            ></i
+            >&nbsp;
+          </button>
+          <button class="botones-proyecto">
+            <i
+              (click)="eliminarProyecto(proyecto.id)"
+              class="fa-solid fa-trash-can text-danger"
+            ></i>
+          </button>
+        </div>
+        <div class="face face1">
+          <div class="content">
+            <!-- *ngIf="previsualizacion" -->
+            <figure class="icon" id="consultorio">
+              <img
+                class="img-proyecto"
+                src="{{ proyecto.portada }}"
+                alt="Imágen proyecto consultorio odontológico"
+              />
+            </figure>
+            <!-- [src]="previsualizacion" -->
+          </div>
+        </div>
+        <div class="face face2">
+          <div class="content">
+            <h3>
+              <a
+                class="tituloProyecto"
+                href="{{ proyecto.github }}"
+                target="_blank"
+                ><i id="github" class="fa-brands fa-github"></i
+                >{{ proyecto.nombre }}</a
+              >
+            </h3>
+            <p>Se utilizó:</p>
+            <ul
+              class="listaProyecto"
+              *ngFor="let tecno of proyecto.tecnologias"
+            >
+              <li>{{ tecno.nombre }}</li>
+            </ul>
+
+            <ul *ngFor="let tipo of selectedTecnologias">
+              <li>{{ tipo.nombre }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-------------------------MODAL PROYECTO--------------------------------------------------------->
+  <div class="modal-box">
+  <div
+    class="modal fade"
+    id="exampleModal4"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form class="containers" [formGroup]="formProyecto" (ngSubmit)="guardarProyecto()">
+            <h5 class="titulo"> {{ accion | uppercase }} PROYECTO</h5>
+            
+            <mat-form-field class="input" appearance="legacy">
+              <mat-label>Nombre</mat-label>
+              <input matInput 
+              placeholder="Ingrese Nombre de proyecto"
+              
+              formControlName="nombre">                        
+            </mat-form-field>
+
+            <mat-form-field class="input" appearance="legacy">
+              <mat-label>GitHub URL</mat-label>
+              <input matInput 
+              placeholder="Ingrese direccion de GitHub"
+              
+              formControlName="github">                        
+            </mat-form-field>
+            
+
+            <mat-form-field class="input" appearance="legacy">
+              <mat-label>Foto</mat-label>
+              <input matInput 
+              placeholder="Ingrese URL de la imagen"
+              
+              formControlName="portada">                        
+            </mat-form-field>
+            
+
+            <mat-form-field  class="date"appearance="legacy">
+              <mat-label>Choose a date</mat-label>
+              <input matInput [matDatepicker]="picker2"
+              formControlName="anio">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+          
+
+            <mat-expansion-panel
+            
+            >
+              <mat-expansion-panel-header >
+                <mat-panel-title> Elije la tecnologia usada </mat-panel-title>
+                <mat-panel-description> </mat-panel-description>
+              </mat-expansion-panel-header>
+              <mat-selection-list 
+                #tecnoList
+                formControlName="selectedTecnologias"
+                (ngModelChange)="onGroupsChange($event)"
+              >
+                <mat-list-option
+                  *ngFor="let tipo of misTecnologias"
+                  [value]="tipo"
+                >
+                  {{ tipo.nombre }}
+                </mat-list-option>
+              </mat-selection-list>
+            </mat-expansion-panel>
+
+            <!--  <div class="input-group flex-nowrap">
+                  <span class="input-group-text" id="addon-wrapping">
+                    <i
+                      [class.icono-verde]="
+                        this.formProyecto.get('imagen')?.valid
+                      "
+                      [class.icono-rojo]="
+                        this.formProyecto.get('imagen')?.invalid &&
+                        this.formProyecto.get('imagen')?.touched
+                      "
+                      class="fa-solid fa-calendar-days"
+                    ></i>
+                  </span>
+                  <input 
+                    formControlName="imagen" 
+                    maxlength="10"
+                    type="file"
+                    class="form-control"
+                    placeholder="YYYY/MM/DD"
+                    aria-label="inicio"
+                    aria-describedby="addon-wrapping"
+                  />
+                </div>  -->
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                [disabled]="this.formProyecto.invalid"
+                type="submit"
+                class="btn "
+                data-bs-dismiss="modal"
+                (ngSubmit)="guardarProyecto()"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>

@@ -1,0 +1,293 @@
+<section class="info">
+  <div class="container-fluid">
+  <div class="row">
+  <section class="col-sm-12 col-lg-5">
+    
+    <h2 id="ExperienciaLaboral" class="titulo-secciones">Experiencia laboral</h2>
+  <button  type="button"  id="botonAgregar"  
+  color="accent"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal3" *ngIf="ulogged != ''" mat-raised-button >
+  Agregar Experiencia Laboral</button>
+  
+    <div class="listaExperiencia">
+      <div class="row d-flex flex-wrap">
+        <div
+          class="card m-1"
+          *ngFor="let item of misDatos"
+          style="width: 18rem"
+        >
+          <div class="card-body">
+            <div *ngIf="ulogged != ''" class="botones-experiencia d-flex justify-content-end">
+              <button
+                type="button"
+                class="botonEducacion"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal3"
+              >
+                <i
+                  (click)="editarExperiencia(item)"
+                  class="fa-solid fa-pen-to-square text-info"
+                ></i
+                >&nbsp;
+              </button>
+              <button class="botonEducacion">
+                <i
+                  (click)="eliminarExperiencia(item.id)"
+                  class="fa-solid fa-trash-can text-danger"
+                ></i>
+              </button>
+            </div>
+            <h5 class="card-title">{{ item.nombre_experiencia }}</h5>
+
+            <h6 class="card-subtitle mb-2 text-muted">
+              {{ item.tipoTrabajos.nombreTipoTrabajo }}
+            </h6>
+
+
+           
+
+            <p class="card-text">{{ item.descripcion }}</p>
+            <p>Fecha de inicio: {{ item.fecha_inicio }}</p>
+            <p>Fecha de finalizado: {{ item.fecha_fin }}</p>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </section>
+
+   <!------------------------------EDUCACION---------------------------------------------->
+   <section class="col-sm-12 col-lg-7  educacion">
+    <h2 id="Educacion" class="titulo-secciones">Educacion</h2>
+   
+    <button  type="button" id="botonAgregar"
+    color="accent"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal2" *ngIf="ulogged != ''" mat-raised-button >
+    Agregar Educacion</button>
+      <!-- <a id="botonAgregar" *ngIf="ulogged != ''"> <i class="fa-solid fa-plus"></i>Agregar Educacion</a> -->
+    
+
+    <div id="tablaEducacion">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Nombre Institucion</th>
+            <th scope="col">Inicio</th>
+            <th scope="col">Finalizacion</th>
+            <th scope="col">Tipo Educacion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let educacion of arrayEducacion">
+            <td>{{ educacion.nombreEducacion }}</td>
+            <td>{{ educacion.fechaInicio }}</td>
+            <td>{{ educacion.fechaFin }}</td>
+            <td>{{ educacion.tipoEducacion.nombreTipoEducacion}}</td>
+
+            <td *ngIf="ulogged != ''">
+              <button
+                type="button"
+                class="botonEducacion"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal2"
+              >
+                <i
+                  (click)="editarEducacion(educacion)"
+                  class="fa-solid fa-pen-to-square text-info"
+                ></i
+                >&nbsp;
+              </button>
+              <button class="botonEducacion">
+                <i
+                  (click)="eliminarEducacion(educacion.id)"
+                  class="fa-solid fa-trash-can text-danger"
+                ></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+</div>
+</section>
+  <!--------------------------MODAL EXPERIENCIA------------------------------------------------->
+  <div class="modal-box">
+  <div
+    class="modal fade"
+    id="exampleModal3"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+         <form class="containers" [formGroup]="formExperiencia" (ngSubmit)="guardarExperiencia()"> 
+            <h5 class="titulo">{{ accion | uppercase }} EXPERIENCIA</h5>   
+              
+             
+              <mat-form-field class="input" appearance="legacy">
+                <mat-label>Nombre</mat-label>
+                <input matInput 
+                placeholder="Ingrese nombre de experiencia laboral"
+                
+                formControlName="nombre_experiencia">
+                      
+              </mat-form-field>
+               
+              <mat-form-field class="date" appearance="legacy">
+                <mat-label>Enter a date range</mat-label>
+                <mat-date-range-input formControlName="fecha_inicio" [rangePicker]="picker">
+                  <input matStartDate formControlName="fecha_inicio" placeholder="Start date">
+                  <input matEndDate formControlName="fecha_fin" placeholder="End date">
+                </mat-date-range-input>
+                <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+              </mat-form-field>
+
+              <mat-form-field class="input" appearance="legacy">
+                <mat-label>Descripcion</mat-label>
+                <input matInput 
+                placeholder="Describa brevemente su posicion"
+                
+                formControlName="descripcion">
+                      
+              </mat-form-field>
+
+              <mat-form-field clase="input" appearance="legacy">
+                <mat-label>Elegi tipo trabajo</mat-label>
+                <mat-select 
+                formControlName="listaTrabajos">
+                  <mat-option *ngFor="let tip of tipo" [value]="tip" >{{ tip.nombreTipoTrabajo}}</mat-option>
+                  
+                </mat-select>
+              </mat-form-field>
+           
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                [disabled]="this.formExperiencia.invalid"
+                type="submit"
+                class="btn"
+                data-bs-dismiss="modal"
+                (ngSubmit)="guardarExperiencia()"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+ 
+
+    <!----------------------------------MODAL EDUCACION------------------------------------------>
+
+    <section>
+      <!-- Modal -->
+      <div class="modal-box">
+      <div
+        class="modal fade"
+        id="exampleModal2"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form
+              class="containers"
+                id="formEdu"
+                [formGroup]="form"
+                (ngSubmit)="guardarEducacion()"
+              >
+                <h5 class="titulo">{{ accion | uppercase }} EDUCACION</h5>
+
+                <mat-form-field class="input" appearance="legacy">
+                  <mat-label>Nombre</mat-label>
+                  <input matInput 
+                  placeholder="Ingrese Nombre de la Institucion"
+                  
+                  formControlName="nombreEducacion">                        
+                </mat-form-field>
+
+                <mat-form-field class="date" appearance="legacy">
+                  <mat-label>Enter a date range</mat-label>
+                  <mat-date-range-input formControlName="fechaInicio" [rangePicker]="picker1">
+                    <input matStartDate formControlName="fechaInicio" placeholder="Start date">
+                    <input matEndDate formControlName="fechaFin" placeholder="End date">
+                  </mat-date-range-input>
+                  <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                  <mat-date-range-picker #picker1></mat-date-range-picker>
+                </mat-form-field>
+
+                <mat-form-field clase="input" appearance="legacy">
+                  <mat-label>Elegi tipo educacion</mat-label>
+                  <mat-select 
+                  formControlName="tipoEducacion">
+                    <mat-option *ngFor="let tip of tipoEdu" [value]="tip" >{{  tip.nombreTipoEducacion}}</mat-option>
+                    
+                  </mat-select>
+                </mat-form-field>
+             
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn "
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button
+                    [disabled]="this.form.invalid"
+                    type="submit"
+                    class="btn "
+                    data-bs-dismiss="modal"
+                    (ngSubmit)="guardarEducacion()"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </section>
+ 
+

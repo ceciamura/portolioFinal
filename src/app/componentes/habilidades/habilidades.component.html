@@ -1,0 +1,279 @@
+
+<section class="habilidades">
+    <h2 id="HardSkills" class="titulo-secciones">Hard Skills</h2>
+
+  <button  type="button" id="botonAgregar"   
+      color="accent"
+      data-bs-toggle="modal"
+      data-bs-target="#modalHardSkill" *ngIf="ulogged != ''" mat-raised-button >
+      Agregar HardSkill</button>
+    <div class="container-fluid habilidades-container" >
+
+      <div class="row">
+
+      <div  class="col-12 col-lg-4 textoHardSkill"   @enterState>
+        <p >La pandemia del año 2020 fue el principal motivo por el cual decidi hacer un cambio radical en mi vida 
+          a nivel profesional. A mediados de ese año empece mis primeros pasos en el mundo de la programacion, 
+          empezando con <span class="spanHS">DISEÑO WEB</span>, donde vimos <span class="spanHS">HTML, CSS, SASS</span>, despues segui con <span class="spanHS">JAVASCRIPT</span>, hasta terminar hoy 
+          casi dos años despues, terminando este curso de <SPAN class="spanHS">FULL STACK DEVELOPER</SPAN>. Estos son mis comienzos en un mundo
+          nuevo de constante desarrollo y evolucion al que estoy inmersa al 100% y por el cual quiero apostar.
+        </p>
+      </div> 
+
+      <article class="col-12 col-lg-8 hardSkillContainer">
+      <div class="html-css " *ngFor="let tecno of hardSkillList"> 
+      <div class="botonesHard">
+      <button *ngIf="ulogged != ''"
+      type="button"
+      class="botonEducacion"
+      data-bs-toggle="modal"
+      data-bs-target="#modalHardSkill"
+    >
+      <i
+      (click)="editarHardSkills(tecno)"
+        class="fa-solid fa-pen-to-square text-info"
+      ></i
+      >&nbsp;
+    </button>
+    <button *ngIf="ulogged != ''" class="botonEducacion">
+      <i
+        (click)="eliminarHardSkills(tecno.id)"
+        class="fa-solid fa-trash-can text-danger"
+      ></i>
+    </button>
+  </div>
+  <p class="porcentaje">{{tecno.porcentaje}}%</p>
+      <circle-progress
+      
+            [percent]="tecno.porcentaje"
+            [radius]="60"
+            [outerStrokeWidth]="11"
+            [imageSrc]="tecno.logo"
+            [showImage]="true"
+            [imageHeight]="60"
+            [imageWidth]="60"
+            [innerStrokeWidth]="8"
+            [outerStrokeColor]="tecno.colorExterno"
+            [innerStrokeColor]="tecno.colorInterno"
+            [animation]="true"
+            [animationDuration]="300"
+            
+                        
+            
+            
+>     </circle-progress>
+
+
+  
+      </div>
+      </article>
+    </div>
+  </div>
+
+ 
+
+<!----------------------------MODAL HARD SKILLS--------------------------------------------------------->
+<div class="modal-box">
+<div
+    class="modal fade"
+    id="modalHardSkill"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"        
+          >
+          <a *ngIf="ulogged != ''"> <i class="fa-solid fa-plus"></i></a></button>
+        </div>
+        <div class="modal-body">
+            <form class="containers"[formGroup]="formHardSkills"(ngSubmit)="guardarHardSKills()"> 
+            <h5 class="titulo">{{ accion | uppercase }} Hard SKILLS</h5>
+
+            <mat-form-field class="input" appearance="legacy">
+              <mat-label>Porcentaje</mat-label>
+              <input matInput 
+              placeholder="Ingrese porcentaje"              
+              formControlName="porcentaje">                        
+            </mat-form-field>
+
+            <mat-form-field class="input" appearance="legacy">
+              <mat-label>Logo</mat-label>
+              <input matInput 
+              placeholder="Ingrese URL de imagen"              
+              formControlName="logo">                        
+            </mat-form-field>
+
+            <mat-form-field class="input" appearance="legacy">
+              <mat-label>Elija color externo</mat-label>
+              <input matInput type="color"                            
+              formControlName="colorExterno">                        
+            </mat-form-field>
+
+            <mat-form-field class="input" appearance="legacy">
+              <mat-label>Elija color interno</mat-label>
+              <input matInput type="color"                            
+              formControlName="colorInterno">                        
+            </mat-form-field>
+
+            
+            
+           
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+              type="submit"
+              class="btn"
+              data-bs-dismiss="modal"
+              (ngSubmit)="guardarHardSKills()"
+              
+              ><!-- (click) = "onPatch()" -->
+              Submit
+            </button>
+            
+            <!-- [disabled]="this.formSoftSkills.invalid" -->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!----------------------------SOFT SKILLS--------------------------------------------------------->
+
+<section class="soft">    
+    
+    <h2  id="SoftSkills" class="titulo-secciones">Soft Skills</h2>
+   
+  <button  type="button"  id="botonAgregar"  
+  color="accent"
+  data-bs-toggle="modal"
+  data-bs-target="#modalSkill"*ngIf="ulogged != ''" mat-raised-button >
+  Agregar SoftSkill</button>
+  
+    <div class="soft-skills">
+       
+   
+        <ol class="gradient-list">
+          <li *ngFor="let skill of softSkillList">
+              {{skill.softSkills}}
+          
+              
+            <button *ngIf="ulogged != ''"
+              type="button"
+              class="botonEducacion"
+              data-bs-toggle="modal"
+              data-bs-target="#modalSkill"
+            >
+              <i
+                (click)="editarSoftSkills(skill)"
+                class="fa-solid fa-pen-to-square text-info"
+              ></i
+              >&nbsp;
+            </button>
+            <button *ngIf="ulogged != ''" class="botonEducacion">
+              <i
+                (click)="eliminarSoftSkills(skill.id)"
+                class="fa-solid fa-trash-can text-danger"
+              ></i>
+            </button></li>
+          
+        </ol>  
+   
+</div>
+</section>
+
+<!------------------------MODAL SOFT SKILLS------------------------------------------------------>
+<div class="modal-box">
+<div
+    class="modal fade"
+    id="modalSkill"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+            <form class="containers"  [formGroup]="formSoftSkills" (ngSubmit)="guardarSoftSKills()" > 
+            <h5 class="tituloSoft">{{ accion | uppercase }} SOFT SKILLS</h5>
+
+            <mat-form-field class="input" appearance="legacy">
+              <mat-label>SoftSkill</mat-label>
+              <input matInput 
+              placeholder="Ingrese softSkill"              
+              formControlName="softSkills">                        
+            </mat-form-field>
+            
+           <!--  <div class="input-group flex-nowrap">
+              <span class="input-group-text" id="addon-wrapping">
+                <i
+                  [class.icono-verde]="
+                    this.formSoftSkills.get('softSkills')?.valid
+                  "
+                  [class.icono-rojo]="
+                    this.formSoftSkills.get('softSkills')?.invalid &&
+                    this.formSoftSkills.get('softSkills')?.touched
+                  "
+                  class="fa-solid fa-book"
+                ></i>
+              </span>
+                <input
+                  formControlName="softSkills"
+                  type="text"
+                  class="form-control"
+                  placeholder="Nombre softSkills"
+                  aria-label="nombre"
+                  aria-describedby="addon-wrapping"
+                />
+              </div> -->
+           
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                [disabled]="this.formSoftSkills.invalid"
+                type="submit"
+                class="btn"
+                data-bs-dismiss="modal"
+                (ngSubmit)="guardarSoftSKills()"
+                >
+                Submit
+            </button>
+            
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+</section>
