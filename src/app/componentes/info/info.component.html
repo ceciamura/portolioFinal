@@ -148,7 +148,7 @@
                
               <mat-form-field class="date" appearance="legacy">
                 <mat-label>Enter a date range</mat-label>
-                <mat-date-range-input formControlName="fecha_inicio" [rangePicker]="picker">
+                <mat-date-range-input  [rangePicker]="picker">
                   <input matStartDate formControlName="fecha_inicio" placeholder="Start date">
                   <input matEndDate formControlName="fecha_fin" placeholder="End date">
                 </mat-date-range-input>
@@ -246,7 +246,7 @@
 
                 <mat-form-field class="date" appearance="legacy">
                   <mat-label>Enter a date range</mat-label>
-                  <mat-date-range-input formControlName="fechaInicio" [rangePicker]="picker1">
+                  <mat-date-range-input  [rangePicker]="picker1">
                     <input matStartDate formControlName="fechaInicio" placeholder="Start date">
                     <input matEndDate formControlName="fechaFin" placeholder="End date">
                   </mat-date-range-input>
