@@ -1,6 +1,6 @@
 {
     "/api/*":{
-        "target": "https://portfolio-ceci-amura.herokuapp.com/",
+        "target": "https://portfolio-ceci-amura.herokuapp.com",
         "secure": false,
         "logLevel": "debug",
         "changeOrigin": true
