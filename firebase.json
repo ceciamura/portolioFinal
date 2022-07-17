@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "/dist/portolio-arg-prog",
+    "public": "dist/portolio-arg-prog",
     "ignore": [
       "firebase.json",
       "**/.*",

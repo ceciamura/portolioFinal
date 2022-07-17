@@ -1,0 +1,13 @@
+[debug] [2022-07-17T14:43:23.111Z] ----------------------------------------------------------------------
+[debug] [2022-07-17T14:43:23.115Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\cecil\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2022-07-17T14:43:23.116Z] CLI Version:   10.9.2
+[debug] [2022-07-17T14:43:23.116Z] Platform:      win32
+[debug] [2022-07-17T14:43:23.116Z] Node Version:  v14.16.0
+[debug] [2022-07-17T14:43:23.125Z] Time:          Sun Jul 17 2022 11:43:23 GMT-0300 (Argentina Standard Time)
+[debug] [2022-07-17T14:43:23.125Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-07-17T14:43:23.292Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-07-17T14:43:23.292Z] > authorizing via signed-in user (cecilia.amura88@gmail.com)
+[debug] [2022-07-17T14:43:23.292Z] [iam] checking project argprogceciamura for permissions ["firebase.projects.get"]
+[debug] [2022-07-17T14:43:23.298Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/argprogceciamura:testIamPermissions [none]
+[debug] [2022-07-17T14:43:23.298Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/argprogceciamura:testIamPermissions {"permissions":["firebase.projects.get"]}
