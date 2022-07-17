@@ -14,8 +14,8 @@ import { Educacion } from '../clases/educacion';
 })
 export class PersonaService {
 
-private urlApi= "/api/persona";
-private api= "/api/"
+private urlApi= "https://portfolio-ceci-amura.herokuapp.com/api/persona";
+private api= "https://portfolio-ceci-amura.herokuapp.com/api/"
 
 constructor(private http:HttpClient, private login:LoginService) { }
 
