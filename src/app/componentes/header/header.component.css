@@ -19,14 +19,12 @@
 
   /****************HEADER************************************************************/
 .redes{
-    /* display: flex;
-    justify-content: space-between; */
     padding: 1rem;
 }
 .redes i{
     margin-left: 2rem;
     font-size: 3em;
-    /* color:  rgb(255,71,111); */
+    
 }
 .editar, .btn{
     
@@ -44,7 +42,7 @@
 
 .botones{
     display:flex;
-    justify-content: end;
+    justify-content: flex-end;
     
 }
 .editar i{

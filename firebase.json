@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "./dist/portolio-arg-prog",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
