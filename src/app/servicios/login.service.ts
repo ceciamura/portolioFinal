@@ -18,7 +18,7 @@ private url2="/api/";
   }
 
   getUser(id:number):Observable<any>{
-    return this.http.get(this.url+"/"+id);
+    return this.http.get(this.url+id);
   }
 
   //TOKEN

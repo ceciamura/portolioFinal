@@ -27,6 +27,7 @@ export class HeaderComponent implements OnInit {
  http.get(this.rutaapi+"/ver").subscribe(data=>{
       this.misDatos=data;
       
+      
    
     })
 
