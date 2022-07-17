@@ -25,8 +25,8 @@ getPersona(id:number): Observable<any>{
   
 }
 verPersonas(){
-  console.log('ver persona')
- return this.http.get(this.urlApi+"/ver")
+ return this.http.get(this.api+"persona/ver", { responseType: 'json' }
+ )
 }
 actualizarPersona(id:number, persona:any):Observable<any>{
   console.log('actualizar persona')
