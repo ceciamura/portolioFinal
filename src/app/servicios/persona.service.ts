@@ -20,117 +20,145 @@ private api= "/api/"
 constructor(private http:HttpClient, private login:LoginService) { }
 
 getPersona(id:number): Observable<any>{
+  console.log('get persona')
   return this.http.get(this.urlApi+"/"+id)
+  
 }
 verPersonas(){
+  console.log('ver persona')
  return this.http.get(this.urlApi+"/ver")
 }
 actualizarPersona(id:number, persona:any):Observable<any>{
+  console.log('actualizar persona')
   return this.http.put(this.urlApi+"/editar"+id, persona);
 }
 
 
 /*----------------------servicio experiencia laboral*--------------------------------------------**/
 verExperiencia():Observable<any>{
-  return this.http.get(this.api + "experiencia/ver")
+  console.log('ver expe lab')
+  return this.http.get(this.api+"experiencia/ver")
 }
 eliminarExperiencia(id:number):Observable<any>{
-  return this.http.delete(this.api+ "experiencia/delete/"+id)
+  console.log('eliminar expe lab')
+  return this.http.delete(this.api+"experiencia/delete/"+id)
 }
 actualizarExperiencia(experiencia:any):Observable<any>{
-  return this.http.put(this.api + "experiencia/edit", experiencia)
+  console.log('actualizar expe lab')
+  return this.http.put(this.api+"experiencia/edit", experiencia)
 }
 guardarExperiencia(persona:any):Observable<any>{
-  return this.http.post(this.api + "experiencia/new", persona)
+  console.log('guardar expe lab')
+  return this.http.post(this.api+"experiencia/new", persona)
 }
 
 
   /*--------servicio tipo experiencia* servicio tipo educacion- *tipoTecnologias-------------------------------------------**/
  getTipo(): Observable<ExperienciaLaboral[]> {
-  return this.http.get(this.api + "tipoTrabajo/ver").pipe(
+  console.log('get tipo')
+  return this.http.get(this.api +"tipoTrabajo/ver").pipe(
     map(tipos => tipos as ExperienciaLaboral[])
   );
 } 
 getTipoEducacion(): Observable<Educacion[]> {
-  return this.http.get(this.api + "tipoEdu/ver").pipe(
+  console.log('get tipoedu')
+  return this.http.get(this.api+"tipoEdu/ver").pipe(
     map(tiposEdu => tiposEdu as Educacion[])
   );
 } 
 
 tipoTecnologia():Observable<any>{
-  return this.http.get(this.api + "tecnologia/ver")
+  console.log('get tipo tecno')
+  return this.http.get(this.api+"tecnologia/ver")
 }
 
 
 /*----------------------servicio educacion-------------------------------------------------------**/
 verEducacion():Observable<any>{
-  return this.http.get(this.api + "educacion/ver")
+  console.log('get educacion')
+  return this.http.get(this.api+"educacion/ver")
 }
 verTipoEducacion():Observable<any>{
-  return this.http.get(this.api + "nombreTipoEducacion/ver")
+  console.log('get vertipoedu')
+  return this.http.get(this.api+"nombreTipoEducacion/ver")
 }
 eliminarEducacion(id:number):Observable<any>{
-  return this.http.delete(this.api+ "educacion/delete/"+id)
+  console.log('get eliminaredu')
+  return this.http.delete(this.api+"educacion/delete/"+id)
 }
 
 guardarEducacion(persona:any):Observable<any>{
-  return this.http.post(this.api + "educacion/new", persona)
+  console.log('get guardaredu')
+  return this.http.post(this.api+"educacion/new", persona)
 }
 
 actualizarEducacion(id:number, persona:any):Observable<any>{
-  return this.http.put(this.api + "educacion/editar/"+id, persona)
+  console.log('get actualizaredu')
+  return this.http.put(this.api+"educacion/editar/"+id, persona)
 }
 
 /**************************PROYECTO SERVICE***************************************************** */
 verProyecto():Observable<any>{
-  return this.http.get(this.api + "proyecto/ver")
+  console.log('get proyectos')
+  return this.http.get(this.api+"proyecto/ver")
 }
 
 eliminarProyecto(id:number):Observable<any>{
-  return this.http.delete(this.api+ "proyecto/delete/"+id)
+  console.log('eliminarproyecgto')
+  return this.http.delete(this.api+"proyecto/delete/"+id)
 }
 
 guardarProyecto(proyecto:any):Observable<any>{
-  return this.http.post(this.api + "proyecto/new", proyecto)
+  console.log('guardar proyecto')
+  return this.http.post(this.api+"proyecto/new", proyecto)
 }
 
 actualizarProyecto(proyecto:any):Observable<any>{
-  return this.http.put(this.api + "proyecto/edit", proyecto)
+  console.log('actualizar proyecto')
+  return this.http.put(this.api+"proyecto/edit", proyecto)
 } 
 
 /**************SOFTSKILLS SERVICE******************************** */
 
 verSoftSkills():Observable<any>{
-  return this.http.get(this.api + "soft/ver")
+  console.log('verr softskill')
+  return this.http.get(this.api+"soft/ver")
 }
 
 eliminarSoftSkills(id:number):Observable<any>{
-  return this.http.delete(this.api+ "soft/delete/"+id)
+  console.log('eliminar soft')
+  return this.http.delete(this.api+"soft/delete/"+id)
 }
 
 guardarSoftSkills(softSkills:any):Observable<any>{
-  return this.http.post(this.api + "soft/new", softSkills)
+  console.log('guardar soft')
+  return this.http.post(this.api+"soft/new", softSkills)
 }
 
 actualizarSoftSkills(softSkills:any):Observable<any>{
-  return this.http.put(this.api + "soft/edit", softSkills)
+  console.log('actualizar soft')
+  return this.http.put(this.api+"soft/edit", softSkills)
 } 
 /**************HardSKILLS SERVICE******************************** */
 
 verHardSkills():Observable<any>{
-  return this.http.get(this.api + "hard/ver")
+  console.log('ver hard')
+  return this.http.get(this.api+"hard/ver")
 }
 
 eliminarHardSkills(id:number):Observable<any>{
-  return this.http.delete(this.api+ "hard/delete/"+id)
+  console.log('eliminar hard')
+  return this.http.delete(this.api+"hard/delete/"+id)
 }
 
 guardarHardSkills(hardSkills:any):Observable<any>{
-  return this.http.post(this.api + "hard/new", hardSkills)
+  console.log('guardar hard')
+  return this.http.post(this.api+"hard/new", hardSkills)
 }
 
 actualizarHardSkills(hardSkills:any):Observable<any>{
-  return this.http.put(this.api + "hard/edit", hardSkills)
+  console.log('actualizar hard')
+  return this.http.put(this.api+"hard/edit", hardSkills)
 } 
 
 

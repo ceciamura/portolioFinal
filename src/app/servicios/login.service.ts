@@ -14,10 +14,12 @@ private url2="/api/";
   constructor(private http:HttpClient, private cookies:CookieService) { }
 
   login(Users:any): Observable<any>{
+    console.log('login')
     return this.http.post(this.url+ "login" , Users);
   }
 
   getUser(id:number):Observable<any>{
+    console.log('get user')
     return this.http.get(this.url+id);
   }
 
