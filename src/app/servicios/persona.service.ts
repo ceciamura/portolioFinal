@@ -15,22 +15,24 @@ import { Educacion } from '../clases/educacion';
 export class PersonaService {
 
 private urlApi= "https://portfolio-ceci-amura.herokuapp.com/api/persona";
-private api= "https://portfolio-ceci-amura.herokuapp.com/api/";
+private api= "https://portfolio-ceci-amura.herokuapp.com/api/"
 
 constructor(private http:HttpClient, private login:LoginService) { }
 
 getPersona(id:number): Observable<any>{
   console.log('get persona')
-  return this.http.get(this.urlApi+"/"+id)
-  
+  return this.http.get(this.api+"persona/"+id)
+  //return this.http.get(this.urlApi+"/"+id)
 }
 verPersonas(){
 
- return this.http.get(this.urlApi+"/ver")
+ return this.http.get(this.api+"persona/ver");
+ //return this.http.get(this.urlApi+"/ver")
 }
 actualizarPersona(id:number, persona:any):Observable<any>{
   console.log('actualizar persona')
-  return this.http.put(this.urlApi+"/editar"+id, persona);
+  return this.http.put(this.api+"persona/editar/"+id, persona);
+  //return this.http.put(this.urlApi+"/editar"+id, persona);
 }
 
 
