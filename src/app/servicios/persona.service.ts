@@ -3,7 +3,7 @@ import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LoginService } from './login.service';
 import { ExperienciaLaboral } from '../clases/experiencia-laboral';
-import { map } from 'rxjs/operators';
+import { map } from 'rxjs';
 import { Educacion } from '../clases/educacion';
 
 
@@ -25,8 +25,8 @@ getPersona(id:number): Observable<any>{
   
 }
 verPersonas(){
- return this.http.get(this.api+"persona/ver", { responseType: 'json' }
- )
+
+ return this.http.get(this.urlApi+"/ver")
 }
 actualizarPersona(id:number, persona:any):Observable<any>{
   console.log('actualizar persona')
