@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
 
  misDatos:any;
  ulogged:string="";
- rutaapi="/api/persona";
+ rutaapi="https://portfolio-ceci-amura.herokuapp.com/api/persona";
  reloadOnSearch=false;
 
   constructor(private routes:Router,private loginService:LoginService, private http:HttpClient, private formBuilder:FormBuilder,
