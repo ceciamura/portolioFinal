@@ -11,6 +11,14 @@
         "source": "**",
         "destination": "/index.html"
       }
+    ],
+    "headers":[
+      {
+        "source:": "https://portfolio-ceci-amura.herokuapp.com",
+        "headers": [{
+          "key": "Access-Control-Allow-Origin"
+        }]
+      }
     ]
   }
 }
